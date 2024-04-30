@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { comment } from "/Volumes/Code Files/Builds/Backend/schema/comments.js";
+import { comment } from "./comments.js";
 import { profile } from "./profile.model.js";
 
 const schema = new mongoose.Schema({
