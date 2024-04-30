@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { addPost, getPost, getPostByUsername } from "../controllers/post.js";
 import multer from "multer";
-import { checkLoginStatus } from "/Volumes/Code Files/Builds/Backend/middleware/auth.js";
+import { checkLoginStatus } from "../middleware/auth.js";
 import {
   checkLike,
   likePost,

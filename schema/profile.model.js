@@ -1,5 +1,5 @@
 import mongoose, { mongo } from "mongoose";
-import { post } from "/Volumes/Code Files/Builds/Backend/schema/post.js";
+import { post } from "./post.js";
 import bcrypt, { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

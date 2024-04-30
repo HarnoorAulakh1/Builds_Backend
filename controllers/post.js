@@ -1,11 +1,11 @@
-import { post } from "/Volumes/Code Files/Builds/Backend/schema/post.js";
-import { profile } from "/Volumes/Code Files/Builds/Backend/schema/profile.model.js";
-import { comment } from "/Volumes/Code Files/Builds/Backend/schema/comments.js";
-import notification from "/Volumes/Code Files/Builds/Backend/schema/notification.js";
+import { post } from "../schema/post.js";
+import { profile } from "../schema/profile.model.js";
+import { comment } from "../schema/comments.js";
+import notification from "../schema/notification.js";
 import {
   uploadToCloudinary,
   deleteFromCloudinary,
-} from "/Volumes/Code Files/Builds/Backend/utils/cloudinary.js";
+} from "../utils/cloudinary.js";
 
 export const addPost = async (req, res) => {
   var data = req.body;
