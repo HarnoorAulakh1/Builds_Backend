@@ -81,7 +81,15 @@ export const checkLike = async (req, res) => {
 export const addComment = async (req, res) => {
   var data = req.body;
   const Comment = new comment(data);
-  console.log(data);
+  //console.log(data);
+  await notification.insertMany({
+    user_id: data.sendto,
+    type: "comment",
+    profile_link: data.user_id,
+    profile_username: data.username,
+    content: `${data.username} commented on your post`,
+    photo: data.photo,
+  });
   await comment.insertMany(Comment);
   await post
     .updateOne({ _id: data.post_id }, { $push: { comments: Comment._id } })
@@ -95,7 +103,7 @@ export const addComment = async (req, res) => {
 
 export const getComments = async (req, res) => {
   await comment
-    .find({ post_id: req.params.id})
+    .find({ post_id: req.params.id })
     .sort({ createdAt: -1 })
     .then((response) => {
       res.send(response);
@@ -110,12 +118,12 @@ export const likePost = async (req, res) => {
   await profile.find({ username: data.username }).then(async (response) => {
     if (data.inc == "1") {
       await notification.insertMany({
-        user_id:data.post.user_id,
+        user_id: data.post.user_id,
         type: "post",
-        profile_link:response[0]["_doc"]["_id"],
-        profile_username:data.username,
-        content:`${data.username} liked your post`,
-        photo:response[0]["_doc"]["photo"]
+        profile_link: response[0]["_doc"]["_id"],
+        profile_username: data.username,
+        content: `${data.username} liked your post`,
+        photo: response[0]["_doc"]["photo"],
       });
       await post
         .updateOne(
@@ -204,27 +212,27 @@ export const updatePost = async (req, res) => {
     });
 };
 export const getPostById = async (req, res) => {
-  const data=req.params.id;
+  const data = req.params.id;
   //console.log(data);
   await post
-    .find({user_id: data})
+    .find({ user_id: data })
     .then((response) => {
       res.send(response);
     })
     .catch((err) => {
       res.send(err.message);
     });
-}
+};
 
 export const getPostByPostId = async (req, res) => {
-  const data=req.params.id;
-  console.log(data+"hello");
+  const data = req.params.id;
+  console.log(data + "hello");
   await post
-    .findOne({_id: data})
+    .findOne({ _id: data })
     .then((response) => {
       res.send(response);
     })
     .catch((err) => {
       res.send(err.message);
     });
-}
+};
