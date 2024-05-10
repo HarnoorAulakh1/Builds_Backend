@@ -33,7 +33,7 @@ const port = 3000;
 
 // export const __dirname = dirname(fileURLToPath(import.meta.url));
 // app.use("/", express.static(__dirname));
-// console.log(__dirname);
+ console.log("welcome");
 
 app.use("/user",userRouter);
 app.use("/post",postRouter);
