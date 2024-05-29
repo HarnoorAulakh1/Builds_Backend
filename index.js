@@ -29,7 +29,7 @@ const cloudinary = cloud.v2;
 const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
-const port = 3000;
+const port =process.env.PORT || 3000;
 
 // export const __dirname = dirname(fileURLToPath(import.meta.url));
 // app.use("/", express.static(__dirname));
