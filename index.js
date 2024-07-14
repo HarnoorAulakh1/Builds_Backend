@@ -22,6 +22,7 @@ import userRouter from "./routes/user.js";
 import cookieParser from "cookie-parser";
 import notification from "./schema/notification.js";
 import messageRouter from "./routes/messages.js";
+import {wss} from "./websocket/chat.js";
 dotenv.config({ path: "./.env" });
 
 const cloudinary = cloud.v2;

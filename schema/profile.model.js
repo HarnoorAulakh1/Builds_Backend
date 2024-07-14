@@ -57,6 +57,9 @@ const schema = new mongoose.Schema(
         ref: "profile",
       },
     ],
+    socket:{
+      type:String,
+    },
     notifications: [
       {
         type: mongoose.Schema.Types.ObjectId,
