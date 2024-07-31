@@ -4,7 +4,7 @@ import WebSocket from "ws";
 import messages from "../schema/messages.js";
 
 const app = express();
-const port =process.env.PORT || 4000;
+const port =8080;
 const httpServer = app.listen(port);
 export const wss = new WebSocketServer({ server: httpServer });
 
