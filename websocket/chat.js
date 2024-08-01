@@ -2,10 +2,20 @@ import express from "express";
 import { WebSocketServer } from "ws";
 import WebSocket from "ws";
 import messages from "../schema/messages.js";
+import cors from "cors";
 
 export const app = express();
 const port = process.env.PORT || 3000;
 const httpServer = app.listen(port);
+const corsOptions = {
+  origin: 'https://builds-social.netlify.app', // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials if needed
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+
 export const wss = new WebSocketServer({ server: httpServer });
 
 let map = new Map();
