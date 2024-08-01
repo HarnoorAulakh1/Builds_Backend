@@ -3,8 +3,8 @@ import { WebSocketServer } from "ws";
 import WebSocket from "ws";
 import messages from "../schema/messages.js";
 
-const app = express();
-const port =8080;
+export const app = express();
+const port =process.env.PORT || 3000;
 const httpServer = app.listen(port);
 export const wss = new WebSocketServer({ server: httpServer });
 
@@ -51,4 +51,4 @@ wss.on("connection", async function connection(ws, req) {
   ws.send(JSON.stringify("Hello! Message From Server!!"));
 });
 
-console.log("Server is listening on port 8080");
+//console.log("Server is listening on port 8080");
